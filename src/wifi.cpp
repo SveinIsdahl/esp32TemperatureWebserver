@@ -6,7 +6,7 @@ void wifiTask(void* ssidPointer) {
     // Variable to store the HTTP request
     String header;
 
-    // Dereferncing "double" pointer i.e ssidPointer is a pointer to a bunch of char-pointers
+    // Dereferncing "double" pointer i.e ssidPointer is a pointer to a bunch of char-pointers?
     WiFi.softAP(*(char**)ssidPointer);
 
     IPAddress IP = WiFi.softAPIP();
