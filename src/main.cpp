@@ -1,30 +1,30 @@
 #include "main.h"
 
-
 const char *ssid = "ESP-32";
 
 
-void mainTask(void* param) {
-    while (1) {
-        digitalWrite(2, HIGH);
-        digitalWrite(33, LOW);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-        digitalWrite(2, LOW);
+void mainTask(void *param)
+{
+    while (1)
+    {
+        /*
+        digitalWrite(outPin, LOW);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
         digitalWrite(33, HIGH);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        */
+        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
 
-void setup() {
+void setup()
+{
     Serial.begin(9600);
-    xTaskCreatePinnedToCore(wifiTask, "wifiTask", 30240, &ssid, 3, NULL, 0);
-    xTaskCreatePinnedToCore(mainTask, "mainTask", 1024, NULL, 1, NULL, 1);
-    pinMode(2, OUTPUT);
-    pinMode(33, OUTPUT);
-
-    // put your setup code here, to run once:
+    xTaskCreatePinnedToCore(wifiTask, "wifiTask", 50240, &ssid, 3, NULL, 0);
+    xTaskCreatePinnedToCore(mainTask, "mainTask", 2024, NULL, 1, NULL, 1);
+    pinMode(outPin, OUTPUT);
+    pinMode(tempPin, INPUT);
 }
 
-void loop() {
-    // put your main code here, to run repeatedly:
+void loop()
+{
 }
