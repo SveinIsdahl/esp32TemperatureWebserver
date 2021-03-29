@@ -15,3 +15,5 @@
 
 void wifiTask(void *ssidPointer);
 double analogReadToDegrees(int reading);
+
+extern int globalTargetTemp;

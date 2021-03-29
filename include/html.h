@@ -55,10 +55,12 @@ const char html2[] = R"=====(</span>°c
         <div class="box">
             <button onclick="getTemp()">Refresh Temp</button>
         </div>
-        <div class="box">Target temp: <span id="setTemp">50</span>°c</div>
+        <div class="box">Target temp: <span id="setTemp">)=====";
+
+const char html3[] = R"=====(</span>°c</div>
         <div class="box" style="width: 85%;">
-            <input type="range" min="40" max="60" value="55" id="slider">
-            <div id="targetTemp">55</div>
+            <input type="range" min="40" max="65" value="40" id="slider">
+            <div id="targetTemp">40</div>
             <button onclick="setTarget()">Set Target</button>
         </div>
     </div>
@@ -74,11 +76,10 @@ const char html2[] = R"=====(</span>°c
 
         }
         function setTarget() {
-            setTemp.innerHTML = slider.value + "";
             location.href = "/val/" + targetTemp.innerHTML;
         }
         function getTemp() {
-            location.href = "/getTemp";
+            location.href = "/"
         }
     </script>
 </body>

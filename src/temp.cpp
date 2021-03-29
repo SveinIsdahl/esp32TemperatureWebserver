@@ -6,6 +6,8 @@ double analogReadToDegrees(int reading)
     double u = reading * 0.0008 + 0.1372;
 
     //Fra spenning til grader
+    //Ukjent termistor, steinharts formel gave dårlige resultater
+    //Brukte heller lineær regresjon mellom 37 og 65 grader med ca 30 målinger og fant funksjon
     double deg = -38.52499*u + 114.41527;
     
 

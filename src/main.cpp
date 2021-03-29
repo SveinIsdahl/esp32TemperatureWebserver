@@ -1,17 +1,20 @@
 #include "main.h"
 
 const char *ssid = "ESP-32";
-
+int globalTargetTemp = 40;
 
 void mainTask(void *param)
 {
     while (1)
     {
-        /*
-        digitalWrite(outPin, LOW);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
-        digitalWrite(33, HIGH);
-        */
+        float currentTemp = analogReadToDegrees(analogRead(tempPin));
+
+        if(globalTargetTemp < (currentTemp-1)) {
+            digitalWrite(outPin, HIGH);
+        }
+        else if (globalTargetTemp > (currentTemp+1)){
+            digitalWrite(outPin, LOW);
+        }
         vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
@@ -28,3 +31,4 @@ void setup()
 void loop()
 {
 }
+

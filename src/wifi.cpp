@@ -45,12 +45,22 @@ void wifiTask(void *ssidPointer)
               client.println("HTTP/1.1 200 OK");
               client.println("Content-type:text/html");
               client.println("Connection: close");
-              if(header.indexOf(""))
 
+              int i = header.indexOf("/val/");
+              if (i >= 0)
+              {
+                String s1 = String(header[i+5]);
+                String s2 = String(header[i+6]);
+                globalTargetTemp = (s1+s2).toInt();
+              }
               client.println(html1);
+              
               double temperature = analogReadToDegrees(analogRead(tempPin));
               client.println(String(temperature, 1));
               client.println(html2);
+              client.println(globalTargetTemp);
+              client.println(html3);
+
               // The HTTP response ends with another blank line
               client.println();
               // Break out of the while loop
