@@ -16,6 +16,8 @@ void mainTask(void *param)
             digitalWrite(outPin, LOW);
         }
         vTaskDelay(500 / portTICK_PERIOD_MS);
+        Serial.println(globalTargetTemp);
+        Serial.println(currentTemp);
     }
 }
 
